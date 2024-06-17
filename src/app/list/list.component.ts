@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 interface Postion {
   id: number,
@@ -31,9 +32,11 @@ export class ListComponent implements OnInit {
     {id: 2, title: "Software Developer", position: "Front-end", description: "Complete full life cycle development using structured design methodologies including test-driven development, unit testing, code reviews and scrum"}
   ]
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) {}
 
   ngOnInit() {
+    this.firestore.collection('jobs').valueChanges().subscribe(console.log);
+    console.log('list.component.ts: Hello');
   }
 
 }
