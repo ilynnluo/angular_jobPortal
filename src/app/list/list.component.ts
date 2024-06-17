@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs/internal/Observable';
 
 interface Postion {
   id: number,
@@ -8,7 +9,7 @@ interface Postion {
 }
 
 interface Job {
-  id: number,
+  id: string,
   title: string,
   position: string,
   description: string
@@ -27,16 +28,35 @@ export class ListComponent implements OnInit {
     {id: 4, value: "fullstack", name: "Fullstack"},
   ]
 
-  jobs: Job[] = [
-    {id: 1, title: "Senior Full Stack Developer", position: "Fullstack", description: "You have an active Github account and a simple portfolio website that shows your prior activity You've been described by others as having JavaScript as your first language"},
-    {id: 2, title: "Software Developer", position: "Front-end", description: "Complete full life cycle development using structured design methodologies including test-driven development, unit testing, code reviews and scrum"}
-  ]
+  jobs: Job[] = [];
+  // jobs: Job[] = [
+  //   {id: 1, title: "Senior Full Stack Developer", position: "Fullstack", description: "You have an active Github account and a simple portfolio website that shows your prior activity You've been described by others as having JavaScript as your first language"},
+  //   {id: 2, title: "Software Developer", position: "Front-end", description: "Complete full life cycle development using structured design methodologies including test-driven development, unit testing, code reviews and scrum"}
+  // ]
 
   constructor(private firestore: AngularFirestore) {}
 
   ngOnInit() {
-    this.firestore.collection('jobs').valueChanges().subscribe(console.log);
-    console.log('list.component.ts: Hello');
+    // this.firestore.collection('jobs').valueChanges().subscribe(
+    //   (data: any) => {
+    //     this.jobs = data;
+    //     console.log('jobs', this.jobs);
+    //   }
+    // );
+
+    this.firestore.collection('jobs').snapshotChanges().subscribe(
+      (data: any) => {
+        this.jobs = data.map((e: any) => {
+          return {
+            id: e.payload.doc.id,
+            title: e.payload.doc.data().title,
+            position: e.payload.doc.data().position,
+            description: e.payload.doc.data().description
+          }
+        });
+        console.log('jobs', this.jobs);
+      }
+    );
   }
 
 }

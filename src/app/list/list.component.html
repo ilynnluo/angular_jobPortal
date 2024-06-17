@@ -19,7 +19,7 @@
           <span>{{ job.position }}</span>
           <h3>{{ job.title }}</h3>
           <p>{{ job.description }}</p>
-          <button routerLink="/edit">Edit</button>
+          <button [routerLink]="['/edit/', job.id]">Edit</button>
         </div>
       </li>
     </ul>

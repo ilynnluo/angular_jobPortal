@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 interface Postion {
   id: number,
@@ -20,7 +21,7 @@ export class AddComponent implements OnInit {
   ];
   addJobForm: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) {}
 
   ngOnInit(): void {
     this.addJobForm = new FormGroup({
@@ -30,6 +31,10 @@ export class AddComponent implements OnInit {
     })
   }
   onSubmit() {
-    console.log(this.addJobForm);
+    this.firestore.collection('jobs').add({
+      title: this.addJobForm.controls['title'].value,
+      position: this.addJobForm.controls['position'].value,
+      description: this.addJobForm.controls['description'].value
+    });
   }
 }

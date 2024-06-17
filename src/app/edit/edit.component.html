@@ -4,13 +4,13 @@
 </header>
 <main>
   <form [formGroup]="editJobForm" (ngSubmit)="onSubmit()">
-    <span *ngIf="jobs[0].id === 1">Job ID: {{ jobs[0].id }}</span>
+    <span>Job ID: {{ job.title }}</span>
     <label>Job title</label>
     <input
       type="text"
       name="title"
       formControlName="title"
-      placeholder="Job title"
+      placeholder="job.title"
     />
     <label>position</label>
     <select id="position" name="position" formControlName="position">
@@ -23,11 +23,11 @@
       textarea
       type="text"
       name="description"
+      placeholder="job.description"
       formControlName="description"
-      placeholder="Job description"
     ></textarea>
     <div>
-      <button>Delete</button>
+      <button (click)="onDelete()">Delete</button>
       <button type="submit">Submit</button>
     </div>
 

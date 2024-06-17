@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { title } from 'process';
 
 interface Postion {
   id: number,
@@ -7,7 +9,7 @@ interface Postion {
   name: string
 }
 interface Job {
-  id: number,
+  id: string,
   title: string,
   position: string,
   description: string
@@ -20,26 +22,54 @@ interface Job {
 })
 export class EditComponent implements OnInit {
   positions: Postion[] = [
-    {id: 2, value: "frontend", name: "Front-end"},
-    {id: 3, value: "backend", name: "Back-end"},
-    {id: 4, value: "fullstack", name: "Fullstack"},
+    { id: 2, value: "frontend", name: "Front-end" },
+    { id: 3, value: "backend", name: "Back-end" },
+    { id: 4, value: "fullstack", name: "Fullstack" },
   ];
-  jobs: Job[] = [
-    {id: 1, title: "Senior Full Stack Developer", position: "Fullstack", description: "You have an active Github account and a simple portfolio website that shows your prior activity You've been described by others as having JavaScript as your first language"},
-    {id: 2, title: "Software Developer", position: "Front-end", description: "Complete full life cycle development using structured design methodologies including test-driven development, unit testing, code reviews and scrum"}
-  ]
-  editJobForm: FormGroup = new FormGroup({});
 
-  constructor() { }
+  job: Job = {
+    id: '',
+    title: '',
+    position: '',
+    description: ''
+  }
+
+  editJobForm: FormGroup = new FormGroup({
+    title: new FormControl(null, Validators.required),
+    position: new FormControl(null, Validators.required),
+    description: new FormControl(null, Validators.required)
+  });
+
+  constructor(private firestore: AngularFirestore) { }
+
+  onDelete() {
+    console.log('delete job');
+    // this.firestore.doc('jobs/AqzpbblU1J5wHxUYpqCU').delete();
+  }
 
   ngOnInit(): void {
-    this.editJobForm = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      position: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required)
-    })
+
+    this.firestore.doc('jobs/VFOvUF2cc8KZ9wBywSZk').valueChanges().subscribe(
+      (data: any) => {
+        this.job = {
+          title: data.title,
+          position: data.position,
+          description: data.description,
+          ...data
+        }
+        console.log('job', this.job);
+      }
+
+    );
   }
   onSubmit() {
-    console.log(this.editJobForm);
+    console.log('edit job', this.editJobForm);
+    this.firestore.doc('jobs/AqzpbblU1J5wHxUYpqCU').update({
+      title: this.editJobForm.controls['title'].value,
+      position: this.editJobForm.controls['position'].value,
+      description: this.editJobForm.controls['description'].value
+    });
+
   }
 }
+
