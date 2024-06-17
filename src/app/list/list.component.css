@@ -1,0 +1,21 @@
+.priBtn {
+  width: 64px;
+  height: 32px;
+}
+
+.optBar {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  padding: 48px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listCtn {
+ margin: 0 auto;
+ width: 80%;
+}
+.listItem{
+  margin-top: 24px;
+}

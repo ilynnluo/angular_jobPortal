@@ -1,0 +1,29 @@
+<main>
+  <!-- opt bar -->
+  <div class="optBar">
+    <mat-form-field>
+      <mat-label>Choose a position</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let position of positions" [value]="position.value">
+          {{ position.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="priBtn" routerLink="/add">Add</button>
+  </div>
+  <!-- main list -->
+  <div class="listCtn">
+    <mat-list>
+      <mat-list-item *ngFor="let job of jobs" class="listItem">
+        <mat-chip-list matLine>
+          <mat-chip>{{ job.position }}</mat-chip>
+        </mat-chip-list>
+        <h3 matLine>{{ job.title }}</h3>
+        <p matLine>
+          <span> {{ job.description }} </span>
+        </p>
+        <button class="priBtn"><a routerLink="/edit">Edit</a></button>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</main>
