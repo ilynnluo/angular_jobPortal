@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { PositionsService } from 'src/services/positions.service';
 
 interface Postion {
   id: number,
@@ -14,16 +15,13 @@ interface Postion {
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  positions: Postion[] = [
-    {id: 2, value: "frontend", name: "Front-end"},
-    {id: 3, value: "backend", name: "Back-end"},
-    {id: 4, value: "fullstack", name: "Fullstack"},
-  ];
+  positions!: Postion[];
   addJobForm: FormGroup = new FormGroup({});
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private positionsService: PositionsService, private firestore: AngularFirestore) {}
 
   ngOnInit(): void {
+    this.positions = this.positionsService.getPositions();
     this.addJobForm = new FormGroup({
       title: new FormControl(null, Validators.required),
       position: new FormControl('backend', Validators.required),
