@@ -16,9 +16,11 @@
     <ul>
       <li *ngFor="let job of jobs">
         <div>
-          <span>{{ job.position }}</span>
-          <h3>{{ job.title }}</h3>
-          <p>{{ job.description }}</p>
+          <div>
+            <span>{{ job.position }}</span>
+            <h3>{{ job.title }}</h3>
+            <p>{{ job.description }}</p>
+          </div>
           <button [routerLink]="['/edit/', job.id]">Edit</button>
         </div>
       </li>

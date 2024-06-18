@@ -26,7 +26,7 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {
     this.addJobForm = new FormGroup({
       title: new FormControl(null, Validators.required),
-      position: new FormControl(null, Validators.required),
+      position: new FormControl('backend', Validators.required),
       description: new FormControl(null, Validators.required)
     })
   }

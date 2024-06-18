@@ -4,18 +4,19 @@
 </header>
 <main>
   <form [formGroup]="editJobForm" (ngSubmit)="onSubmit()">
-    <span>Job ID: {{ job.title }}</span>
+    <span>Job ID:</span>
     <label>Job title</label>
     <input
       type="text"
       name="title"
       formControlName="title"
-      placeholder="job.title"
+      placeholder="title"
     />
     <label>position</label>
     <select id="position" name="position" formControlName="position">
-      <option *ngFor="let position of positions" value="position.value">
-        {{ position.name }}
+      <option *ngFor="let pos of positions" value="pos.value" [selected]="pos.value === positionValue"
+      >
+        {{ pos.name }}
       </option>
     </select>
     <label>Description</label>
@@ -23,14 +24,12 @@
       textarea
       type="text"
       name="description"
-      placeholder="job.description"
+      placeholder="description"
       formControlName="description"
     ></textarea>
     <div>
       <button (click)="onDelete()">Delete</button>
       <button type="submit">Submit</button>
     </div>
-
-    <pre> {{ editJobForm.value | json }}</pre>
   </form>
 </main>
