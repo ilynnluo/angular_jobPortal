@@ -15,25 +15,22 @@ import { EditComponent } from './edit/edit.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
+import { PositionFilterPipe } from './pipes/positionFilter.pipe';
 
 
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
-      ListComponent,
-      AddComponent,
-      EditComponent,
-      LoginComponent
-   ],
+    ListComponent,
+    AddComponent,
+    EditComponent,
+    LoginComponent,
+    PositionFilterPipe
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatSelectModule,
-    // MatListModule,
-    // MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
     { id: 4, value: "fullstack", name: "Fullstack" },
   ]
   jobs: Job[] = [];
+  selectedPosition = 'all';
   constructor(private firestore: AngularFirestore) { }
 
   ngOnInit() {
@@ -43,5 +44,7 @@ export class ListComponent implements OnInit {
       }
     );
   }
-
+  onPositionChange(e: any) {
+    this.selectedPosition = e.target.value;
+  }
 }

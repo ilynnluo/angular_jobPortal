@@ -3,7 +3,7 @@
   <div class="optBar">
     <div>
       <label>Choose a position</label>
-      <select>
+      <select [(ngModel)]="selectedPosition" (change)="onPositionChange($event)">
         <option *ngFor="let position of positions" [value]="position.value">
           {{ position.name }}
         </option>
@@ -14,14 +14,14 @@
   <!-- main list -->
   <div class="listCtn">
     <ul>
-      <li *ngFor="let job of jobs">
+      <li *ngFor="let job of jobs | positionFilter:selectedPosition">
         <div>
           <div>
             <span>{{ job.position }}</span>
             <h3>{{ job.title }}</h3>
             <p>{{ job.description }}</p>
           </div>
-          <button [routerLink]="['/edit/', job.id]">Edit</button>
+          <button routerLink="/edit/{{ job.id }}">Edit</button>
         </div>
       </li>
     </ul>
