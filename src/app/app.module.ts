@@ -16,17 +16,19 @@ import { LoginComponent } from './login/login.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { PositionFilterPipe } from './pipes/positionFilter.pipe';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ListComponent,
     AddComponent,
     EditComponent,
     LoginComponent,
-    PositionFilterPipe
-  ],
+    PositionFilterPipe,
+      AccountComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
