@@ -51,5 +51,10 @@ export class EditComponent implements OnInit {
       description: this.editJobForm.controls['description'].value
     })
   }
+
+  onPositionChange(e: any) {
+    this.positionValue = e.target.value;
+  }
+
 }
 

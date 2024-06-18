@@ -4,8 +4,8 @@
     <div>
       <label>Choose a position</label>
       <select [(ngModel)]="selectedPosition" (change)="onPositionChange($event)">
-        <option *ngFor="let position of positions" [value]="position.value">
-          {{ position.name }}
+        <option *ngFor="let po of pos" [value]="po.value">
+          {{ po.name }}
         </option>
       </select>
     </div>

@@ -19,8 +19,7 @@ interface Job {
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
-  positions: Postion[] = [
+  pos: Postion[] = [
     { id: 1, value: "all", name: "All" },
     { id: 2, value: "frontend", name: "Front-end" },
     { id: 3, value: "backend", name: "Back-end" },
@@ -37,7 +36,7 @@ export class ListComponent implements OnInit {
           return {
             id: e.payload.doc.id,
             title: e.payload.doc.data().title,
-            position: e.payload.doc.data().position,
+            position: this.pos.find(p => p.value === e.payload.doc.data().position)?.name || '',
             description: e.payload.doc.data().description
           }
         });

@@ -13,8 +13,8 @@
       placeholder="title"
     />
     <label>position</label>
-    <select id="position" name="position" formControlName="position">
-      <option *ngFor="let pos of positions" value="pos.value" [selected]="pos.value === positionValue"
+    <select id="position" name="position" formControlName="position" (change)="onPositionChange($event)">
+      <option *ngFor="let pos of positions" [value]="pos.value" [selected]="pos.value === positionValue"
       >
         {{ pos.name }}
       </option>
