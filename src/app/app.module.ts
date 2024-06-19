@@ -18,6 +18,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { PositionFilterPipe } from './pipes/positionFilter.pipe';
 import { AccountComponent } from './account/account.component';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { EffectsModule } from '@ngrx/effects';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     EffectsModule.forRoot([]),
+    StoreModule.forRoot({}),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
