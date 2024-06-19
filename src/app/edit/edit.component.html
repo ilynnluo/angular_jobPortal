@@ -1,15 +1,9 @@
-<header>
-  <span>Hello, user.username</span>
-  <a routerLink="/login">Logout</a>
-</header>
-
 <div class="title">
   <h1>Edit the job posting</h1>
   <span><a routerLink="/home">< return to the list</a></span>
 </div>
 <main>
   <form [formGroup]="editJobForm" (ngSubmit)="onSubmit()">
-    <span>Job ID:</span>
     <label>Job title</label>
     <input
       type="text"

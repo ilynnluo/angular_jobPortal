@@ -1,8 +1,11 @@
+import { state } from "@angular/animations";
 import { createSelector, createFeatureSelector } from "@ngrx/store";
 
-export const selectAvatarFeature = createFeatureSelector<string>('avatar');
+export const selectAvatar = createFeatureSelector('avatar')
 
-export const selectAvatar = createSelector(
-  selectAvatarFeature,
-  (avatarState) => avatarState
-)
+// export const selectAvatarSelector = createSelector(
+//   selectAvatar,
+//   (state: any) => state.avatar
+// )
+
+console.log('avatarSelectors')

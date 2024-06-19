@@ -1,13 +1,16 @@
 import { createReducer, on } from "@ngrx/store";
-import { avatarActions } from "./avatar.action";
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-export const initialState: any = '';
-    
+console.log('avatarReducer')
 
-export const avatarReducer = createReducer(
-  initialState,
-  on(avatarActions.getAvatar, (_state, { avatar }) => {
-    console.log('avatar in reducer', avatar)
-    return avatar
-  })
-)
+// export const initialState: any = '';
+
+// export const avatarReducer = createReducer(
+//   initialState,
+//   on(avatarActions.getAvatar, (_state, { avatar }) => {
+//     console.log('avatar in reducer', avatar)
+//     return avatar
+//   })
+// )
+
+export const adapter: EntityAdapter<string> = createEntityAdapter<string>();

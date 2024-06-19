@@ -20,7 +20,7 @@ import { AccountComponent } from './account/account.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
-
+import { avatarReducer } from './store/avatar/avatar.reducer';
 
 @NgModule({
   declarations: [	
@@ -40,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({
+      avatar: avatarReducer
+    }),
     HttpClientModule
   ],
   providers: [],

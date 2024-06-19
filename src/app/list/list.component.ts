@@ -1,27 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AvatarService } from 'src/services/avatar.service';
-import { avatarActions } from '../store/avatar/avatar.action';
 import { Store } from '@ngrx/store';
-interface Postion {
-  id: number,
-  value: string,
-  name: string
-}
+import { Job} from '../../models/job.model'
+import { Postion } from '../../models/position.model'
+import { selectAvatar } from '../store/avatar/avatar.selectors';
 
-interface Job {
-  id: string,
-  title: string,
-  position: string,
-  description: string
-}
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  @Input() avatar: any = '';
+  avatar$ = this.store.select(selectAvatar);
+  @Input() avatar: string = '';
   pos: Postion[] = [
     { id: 1, value: "all", name: "All" },
     { id: 2, value: "frontend", name: "Front-end" },
@@ -47,11 +39,11 @@ export class ListComponent implements OnInit {
     );
     this.avatarService
       .getUsername()
-      .subscribe((data: any) =>
-        // console.log('data', data)
+      .subscribe((data) =>
         this.store.dispatch(avatarActions.getAvatar({ avatar: data }))
       );
-    console.log('avatar', this.avatar);
+
+    console.log('avatar', this.avatar$);
   }
   
   onPositionChange(e: any) {

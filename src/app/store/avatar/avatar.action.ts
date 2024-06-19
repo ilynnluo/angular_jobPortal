@@ -1,8 +1,5 @@
-import { createActionGroup, props } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
 
-export const avatarActions = createActionGroup({
-  source: 'Avatar',
-  events: {
-    'Get Avatar': props<{ avatar: any }>(),
-  }
-})
+console.log('avatarActions')
+export const loadAvatar = createAction('loadAvatar', props<{ avatar: string }>());
+export const loadAvatarInit = createAction('loadAvatarInit');
