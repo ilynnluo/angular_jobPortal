@@ -4,7 +4,8 @@ import { AvatarService } from 'src/services/avatar.service';
 import { Store } from '@ngrx/store';
 import { Job} from '../../models/job.model'
 import { Postion } from '../../models/position.model'
-import { selectAvatar } from '../store/avatar/avatar.selectors';
+import { selectAllAvatars } from '../store/avatar/avatar.selectors';
+import { loadAvatarInit } from '../store/avatar/avatar.action';
 
 @Component({
   selector: 'app-list',
@@ -12,8 +13,7 @@ import { selectAvatar } from '../store/avatar/avatar.selectors';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  avatar$ = this.store.select(selectAvatar);
-  @Input() avatar: string = '';
+  avatar$ = this.store.select(selectAllAvatars);
   pos: Postion[] = [
     { id: 1, value: "all", name: "All" },
     { id: 2, value: "frontend", name: "Front-end" },
@@ -37,12 +37,7 @@ export class ListComponent implements OnInit {
         });
       }
     );
-    this.avatarService
-      .getUsername()
-      .subscribe((data) =>
-        this.store.dispatch(avatarActions.getAvatar({ avatar: data }))
-      );
-
+    this.store.dispatch(loadAvatarInit());
     console.log('avatar', this.avatar$);
   }
   

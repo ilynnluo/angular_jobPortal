@@ -1,11 +1,8 @@
-import { state } from "@angular/animations";
 import { createSelector, createFeatureSelector } from "@ngrx/store";
+import { adapter, AvatarState } from "./avatar.reducer";
 
-export const selectAvatar = createFeatureSelector('avatar')
+export const selectAvatar = createFeatureSelector<AvatarState>('avatar')
 
-// export const selectAvatarSelector = createSelector(
-//   selectAvatar,
-//   (state: any) => state.avatar
-// )
+const { selectAll } = adapter.getSelectors();
 
-console.log('avatarSelectors')
+export const selectAllAvatars = createSelector(selectAvatar, selectAll);
