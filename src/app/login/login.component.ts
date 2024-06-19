@@ -26,9 +26,6 @@ export class LoginComponent implements OnInit {
       password: new FormControl(null, Validators.required)
     })
   }
-  onSubmit() {
-    console.log(this.loginForm);
-  }
 
   login() {
     this.auth.login();

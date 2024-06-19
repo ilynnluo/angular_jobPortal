@@ -2,8 +2,6 @@ import { createReducer, on } from "@ngrx/store";
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as AvatarActions from './avatar.action';
 
-console.log('avatarReducer')
-
 export interface AvatarState extends EntityState<string> { }
 export const adapter: EntityAdapter<string> = createEntityAdapter<string>();
 

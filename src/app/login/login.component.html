@@ -1,25 +1,25 @@
 <header>
-  <h1>Add a job posting</h1>
+  <h1>Click Login Buttion</h1>
 </header>
 <main>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="loginForm">
     <label>User Name</label>
     <input
       type="text"
       name="username"
       formControlName="username"
       placeholder="User Name"
+      value="admin"
     />
     <label>Password</label>
-    <textarea
+    <input
       textarea
       type="password"
       name="password"
       formControlName="password"
       placeholder="Password"
-    ></textarea>
+      value="password"
+    >
     <button type="submit" (click)="login()">Login</button>
-
-    <pre> {{ loginForm.value | json }}</pre>
   </form>
 </main>
