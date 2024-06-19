@@ -1,7 +1,12 @@
 <header>
+  <span>Hello, user.username</span>
+  <a routerLink="/login">Logout</a>
+</header>
+
+<div class="title">
   <h1>Add a job posting</h1>
   <span><a routerLink="/home">< return to the list</a></span>
-</header>
+</div>
 <main>
   <form [formGroup]="addJobForm" (ngSubmit)="onSubmit()">
     <label>Job title</label>

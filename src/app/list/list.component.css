@@ -1,15 +1,13 @@
-.optBar {
-  display: flex;
-  width: 90%;
-  margin: 0 auto;
-  padding: 48px 0;
-  justify-content: space-between;
-  align-items: center;
+header{
+  background-color: green;
+  color: white;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
 }
-
-.listCtn {
- margin: 0 auto;
- width: 80%;
+header a{
+  margin-left: 8px;
+  color: white;
 }
 
 button {
@@ -42,4 +40,18 @@ select {
   border: 1px solid gray;
   width: 120px;
   height: 24px;
+}
+
+.optBar {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  padding: 48px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listCtn {
+ margin: 0 auto;
+ width: 80%;
 }

@@ -1,6 +1,14 @@
 header{
-  margin: 32px auto;
-  width: 400px;
+  background-color:brown;
+  color: white;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+}
+
+header a{
+  margin-left: 8px;
+  color: white;
 }
 
 main {
@@ -48,4 +56,9 @@ button {
   width: 64px;
   height: 32px;
   margin: 0 16px;
+}
+
+.title{
+  margin: 32px auto;
+  width: 400px;
 }

@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { PositionFilterPipe } from './pipes/positionFilter.pipe';
 import { AccountComponent } from './account/account.component';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AccountComponent } from './account/account.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
